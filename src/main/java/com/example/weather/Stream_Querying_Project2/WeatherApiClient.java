@@ -18,6 +18,11 @@ public class WeatherApiClient {
         return responseEntity.getBody();
     }
 
+    public String getIrvine()
+    {
+        return getWeatherData("/points/33.684566,-117.826508");
+    }
+
     // Add more methods as needed for specific API endpoints
 }
 
