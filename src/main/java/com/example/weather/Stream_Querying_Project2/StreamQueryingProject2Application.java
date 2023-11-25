@@ -13,6 +13,7 @@ public class StreamQueryingProject2Application {
         RestTemplate restTemplate = new RestTemplate();
 		WeatherApiClient obj = new WeatherApiClient(restTemplate);
 		System.out.println(obj.getIrvine());
+		HTTPclient.connect(obj.getIrvine());
 	}
 
 }
