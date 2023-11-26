@@ -18,10 +18,24 @@ public class WeatherApiClient {
         return responseEntity.getBody();
     }
 
-    public String getIrvine()
+    public String getBuffalo()
     {
-        return getWeatherData("/points/33.684566,-117.826508");
+        return getWeatherData("/points/42.9405,-78.7322");
     }
+
+    public String observation(String stationId)
+    {
+        String apiUrl = "https://api.weather.gov";
+        String url = apiUrl + stationId;
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+        return responseEntity.getBody();
+    }
+    public String getBuffaloWindSpeeds(){ return observation("/stations/KBUF/observations");}
+
+
+
+
+
 
     // Add more methods as needed for specific API endpoints
 }
