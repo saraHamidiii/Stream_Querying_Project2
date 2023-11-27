@@ -13,7 +13,7 @@ public class StreamQueryingProject2Application {
         RestTemplate restTemplate = new RestTemplate();
 		WeatherApiClient obj = new WeatherApiClient(restTemplate);
 		System.out.println(obj.getBuffaloWindSpeeds());
-		HTTPclient.connect(obj.getBuffaloWindSpeeds());
+		HTTPclient.connect("buffaloNY", obj.getBuffaloWindSpeeds());
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.example.weather.Stream_Querying_Project2;
 
+import com.example.weather.Stream_Querying_Project2.controller.MessageController;
+import com.example.weather.Stream_Querying_Project2.kafka.KafkaProducer;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -32,8 +35,9 @@ public class HTTPclient {
 //        }
 //    }
 
-    public static void connect(String message)
+    public static void connect(String topic, String message)
     {
+        MessageController.topic = topic;
         try {
             String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8.toString());
             URL url = new URL(apiUrl);

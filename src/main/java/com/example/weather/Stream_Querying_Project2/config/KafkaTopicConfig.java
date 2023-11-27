@@ -16,4 +16,12 @@ public class KafkaTopicConfig
                 .build();
     }
 
+    @Bean
+    public NewTopic buffaloTopic()
+    {
+        //add .partitions(number of partitions) after ("javaguides") when you create multiple brokers
+        return TopicBuilder.name("buffaloNY")
+                .build();
+    }
+
 }
