@@ -8,15 +8,6 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 public class KafkaTopicConfig
 {
-    //create two more of these
-    @Bean
-    public NewTopic javaguidesTopic()
-    {
-        //add .partitions(number of partitions) after ("javaguides") when you create multiple brokers
-        return TopicBuilder.name("javaguides")
-                .build();
-    }
-
     @Bean
     public NewTopic buffaloNY()
     {
@@ -36,7 +27,7 @@ public class KafkaTopicConfig
         return TopicBuilder.name("anchorageAK")
                 .build();
     }
-    //need two more topics and delete the first topic
+
 
 
 }
