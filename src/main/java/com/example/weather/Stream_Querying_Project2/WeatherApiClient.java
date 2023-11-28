@@ -30,13 +30,12 @@ public class WeatherApiClient {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
         return responseEntity.getBody();
     }
-    public String getBuffaloWindSpeeds(){ return observation("/stations/KBUF/observations");}
+    public String getBuffaloWeather(){ return observation("/stations/KBUF/observations");}
+
+    public String getChanhassenWeather(){return observation("/stations/KFCM/observations");}
+
+    public String getAnchorageWeather(){return observation("/stations/PANC/observations");}
 
 
-
-
-
-
-    // Add more methods as needed for specific API endpoints
 }
 
