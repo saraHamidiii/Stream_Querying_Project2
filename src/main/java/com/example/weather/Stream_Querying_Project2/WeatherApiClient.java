@@ -14,19 +14,6 @@ public class WeatherApiClient {
         this.restTemplate = restTemplate;
     }
 
-  /*  public String getWeatherData(String endpoint) {
-        String apiUrl = "https://api.weather.gov";
-        String url = apiUrl + endpoint;
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
-        return responseEntity.getBody();
-    }
-
-    public String getBuffalo()
-    {
-        return getWeatherData("/points/42.9405,-78.7322");
-    }*/
-
-
     public String observation(String stationId)
     {
         String apiUrl = "https://api.weather.gov";
