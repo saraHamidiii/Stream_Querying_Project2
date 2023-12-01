@@ -11,6 +11,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+//I created this class to connect to the kafka publish endpoint and actually post the
+//message.
 public class HTTPclient {
 
     private static String apiUrl = "http://localhost:8080/api/v1/kafka/publish";
@@ -26,13 +28,13 @@ public class HTTPclient {
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
             conn.setRequestProperty("Accept", "application/json");
             conn.setDoOutput(true);
-            // Write JSON data to the connection output stream
+            //Here, I am writing JSON data to the connection output stream
             try(OutputStream os = conn.getOutputStream()) {
                 byte[] input = message.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
 
-            // Read the response from the server
+            //This reads the response from the server
             try(BufferedReader br = new BufferedReader(
                     new InputStreamReader(conn.getInputStream(), "utf-8"))) {
                 StringBuilder response = new StringBuilder();

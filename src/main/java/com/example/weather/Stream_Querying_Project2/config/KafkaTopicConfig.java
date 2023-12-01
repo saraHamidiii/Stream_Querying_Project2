@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
+/*
+This class is where I created the topics for my kafka project.
+ */
 @Configuration
 public class KafkaTopicConfig
 {
@@ -14,6 +17,7 @@ public class KafkaTopicConfig
         return TopicBuilder.name("buffaloNY")
                 .build();
     }
+
 
     @Bean public NewTopic chanhassenMN()
     {
