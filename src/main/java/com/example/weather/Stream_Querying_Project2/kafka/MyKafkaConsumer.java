@@ -53,6 +53,22 @@ public class MyKafkaConsumer {
 
                 // Process the received messages
                 for (ConsumerRecord<String, String> record : records) {
+//                    String message = record.value();
+//
+//                    // Sample logic (adapt based on your data format)
+//                    if (message.contains("blizzard")) {
+//                        LOGGER.info("Blizzard alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                record.topic(), record.offset(), record.key(), record.value());
+//                        sendAlert("Blizzard Alert", record.value());
+//                    } else if (message.contains("hurricane")) {
+//                        LOGGER.info("Hurricane alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                record.topic(), record.offset(), record.key(), record.value());
+//                        sendAlert("Hurricane Alert", record.value());
+//                    } else if (message.contains("heavy_rainfall")) {
+//                        LOGGER.info("Heavy rainfall alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                record.topic(), record.offset(), record.key(), record.value());
+//                        sendAlert("Heavy Rainfall Alert", record.value());
+//                    }
                     //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
                     LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
                             record.topic(), record.offset(), record.key(), record.value());
@@ -64,5 +80,10 @@ public class MyKafkaConsumer {
             LOGGER.info("Kafka Consumer has ended.");
         }
     }
+
+//    private static void sendAlert(String alertType, String message) {
+//        // Implement the logic to send an alert
+//        LOGGER.info("Sending {} alert: {}", alertType, message);
+//    }
 }
 
