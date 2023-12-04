@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 
-
 @Service
 public class MyKafkaConsumer {
 //    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
@@ -39,6 +38,7 @@ public class MyKafkaConsumer {
         try (Consumer<String, String> consumer = new KafkaConsumer<>(props)) {
             // Subscribe to the Kafka topics
             consumer.subscribe(Arrays.asList("buffaloNY", "chanhassenMN", "anchorageAK"));
+            LOGGER.info("Subscribed to Kafka topics");
 
             // Ensure the consumer joins the group and receives its assignment
             consumer.poll(Duration.ofMillis(0));
@@ -49,6 +49,7 @@ public class MyKafkaConsumer {
             while (true) {
                 // Poll for new data
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
+                LOGGER.debug("Polled for new data");
 
                 // Process the received messages
                 for (ConsumerRecord<String, String> record : records) {
