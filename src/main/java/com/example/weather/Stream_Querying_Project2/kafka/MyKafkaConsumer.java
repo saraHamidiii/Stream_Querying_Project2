@@ -58,6 +58,8 @@ public class MyKafkaConsumer {
             }
         } catch (Exception e) {
             LOGGER.error("Error in Kafka Consumer: {}", e.getMessage());
+        } finally {
+            LOGGER.info("Kafka Consumer has ended.");
         }
     }
 }
