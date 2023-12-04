@@ -51,6 +51,7 @@ public class StreamQueryingProject2Application {
 	}
 
 	// Scheduled task to start Kafka consumer
+	// Consumer fetches data from Kafka
 	@Scheduled(fixedRate = 1000) // Adjust the rate as needed
 	private void startKafkaConsumer() {
 		myKafkaConsumer.consumeMessages();
