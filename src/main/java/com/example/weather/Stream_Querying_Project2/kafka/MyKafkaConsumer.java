@@ -52,7 +52,8 @@ public class MyKafkaConsumer {
 
                 // Process the received messages
                 for (ConsumerRecord<String, String> record : records) {
-                    System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
+                    //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
+                    LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
                             record.topic(), record.offset(), record.key(), record.value());
                 }
             }
