@@ -1,7 +1,8 @@
 package com.example.weather.Stream_Querying_Project2.kafka;
 
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -22,7 +23,10 @@ public class MyKafkaConsumer {
 //    public void consume(String message){
 //        LOGGER.info(String.format("Message received -> %s", message));
 //    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyKafkaConsumer.class);
     public static void consumeMessages() {
+        LOGGER.info("Kafka Consumer is starting...");
+
         // Set up consumer properties
         Properties props = new Properties();
         props.put("bootstrap.servers", "127.0.0.1:9092"); // Replace with your Kafka bootstrap servers
@@ -53,7 +57,7 @@ public class MyKafkaConsumer {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("Error in Kafka Consumer: {}", e.getMessage());
         }
     }
 }
