@@ -1,6 +1,8 @@
 package com.example.weather.Stream_Querying_Project2.kafka;
 
 import org.springframework.stereotype.Service;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.kafka.clients.consumer.Consumer;
@@ -15,7 +17,7 @@ import java.util.Properties;
 
 @Service
 public class MyKafkaConsumer {
-//    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
+    //    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
 //
 //
 //    @KafkaListener(topics = "topic", groupId = "${spring.kafka.consumer.group-id}")
@@ -53,37 +55,44 @@ public class MyKafkaConsumer {
 
                 // Process the received messages
                 for (ConsumerRecord<String, String> record : records) {
-//                    String message = record.value();
+                    try {
+                        // Parse the JSON message
+                        JsonObject json = JsonParser.parseString(record.value()).getAsJsonObject();
+
+                        // Extract relevant weather parameters
+//                        JsonObject properties = json.getAsJsonObject("properties");
+//                        double temperature = properties.getAsJsonObject("temperature").getAsDouble();
+//                        double windSpeed = properties.getAsJsonObject("windSpeed").getAsDouble();
+//                        double precipitationLastHour = properties.getAsJsonObject("precipitationLastHour").getAsDouble();
 //
-//                    // Sample logic (adapt based on your data format)
-//                    if (message.contains("blizzard")) {
-//                        LOGGER.info("Blizzard alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                record.topic(), record.offset(), record.key(), record.value());
-//                        sendAlert("Blizzard Alert", record.value());
-//                    } else if (message.contains("hurricane")) {
-//                        LOGGER.info("Hurricane alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                record.topic(), record.offset(), record.key(), record.value());
-//                        sendAlert("Hurricane Alert", record.value());
-//                    } else if (message.contains("heavy_rainfall")) {
-//                        LOGGER.info("Heavy rainfall alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                record.topic(), record.offset(), record.key(), record.value());
-//                        sendAlert("Heavy Rainfall Alert", record.value());
-//                    }
-                    //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
-                    LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
-                            record.topic(), record.offset(), record.key(), record.value());
+//                        // Check for specific weather events
+//                        if (temperature < 0.0 && windSpeed > 20.0 && precipitationLastHour > 0.0) {
+//                            LOGGER.info("Blizzard alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                    record.topic(), record.offset(), record.key(), record.value());
+//                            sendAlert("Blizzard Alert", record.value());
+//                        } else if (windSpeed > 74.0) {
+//                            LOGGER.info("Hurricane alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                    record.topic(), record.offset(), record.key(), record.value());
+//                            sendAlert("Hurricane Alert", record.value());
+//                        } else if (precipitationLastHour > 10.0) {
+//                            LOGGER.info("Heavy Rainfall Alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                    record.topic(), record.offset(), record.key(), record.value());
+//                            sendAlert("Heavy Rainfall Alert", record.value());
+//                        }
+                        //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
+                        LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
+                                record.topic(), record.offset(), record.key(), record.value());
+                    } catch (Exception e) {
+                        LOGGER.error("Error in Kafka Consumer: {}", e.getMessage());
+                    } finally {
+                        LOGGER.info("Kafka Consumer has ended.");
+                    }
                 }
             }
-        } catch (Exception e) {
-            LOGGER.error("Error in Kafka Consumer: {}", e.getMessage());
-        } finally {
-            LOGGER.info("Kafka Consumer has ended.");
         }
     }
-
-//    private static void sendAlert(String alertType, String message) {
-//        // Implement the logic to send an alert
-//        LOGGER.info("Sending {} alert: {}", alertType, message);
-//    }
+    private static void sendAlert(String alertType, String message) {
+        // Implement the logic to send an alert
+        LOGGER.info("Sending {} alert: {}", alertType, message);
+    }
 }
-
