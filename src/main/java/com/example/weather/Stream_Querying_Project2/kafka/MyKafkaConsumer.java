@@ -17,13 +17,6 @@ import java.util.Properties;
 
 @Service
 public class MyKafkaConsumer {
-    //    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
-//
-//
-//    @KafkaListener(topics = "topic", groupId = "${spring.kafka.consumer.group-id}")
-//    public void consume(String message){
-//        LOGGER.info(String.format("Message received -> %s", message));
-//    }
     private static final Logger LOGGER = LoggerFactory.getLogger(MyKafkaConsumer.class);
     public static void consumeMessages() {
         LOGGER.info("Kafka Consumer is starting...");
