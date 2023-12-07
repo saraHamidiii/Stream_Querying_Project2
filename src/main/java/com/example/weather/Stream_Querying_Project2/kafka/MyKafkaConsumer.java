@@ -64,6 +64,9 @@ public class MyKafkaConsumer {
                             // Now you can access properties within each feature
                             JsonObject properties = feature.getAsJsonObject("properties");
 
+                            // Print the properties to the console
+                            //System.out.println("Properties: " + properties.toString());
+
                             // Print the keys of the properties object
                             //System.out.println("Properties Keys: " + properties.keySet());
 
