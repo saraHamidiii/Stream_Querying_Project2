@@ -85,6 +85,9 @@ public class MyKafkaConsumer {
                                 } else if ("mostly cloudy".equalsIgnoreCase(textDescription)) {
                                     System.out.println("ID: " + idElement + " Text Description: Mostly Cloudy" + "," + " Temperature: " + valueElement);
                                     sendMostlyCloudyAlert();
+                                } else if ("light snow".equalsIgnoreCase(textDescription)) {
+                                    System.out.println("ID: " + idElement + " Text Description: Light Snow" + "," + " Temperature: " + valueElement);
+                                    sendLightSnowAlert();
                                 } else {
                                     // Handle other conditions or print to console
                                     System.out.println("ID: " + idElement + " Text Description: " + textDescription + "," + " Temperature: " + valueElement);
@@ -113,5 +116,11 @@ public class MyKafkaConsumer {
     private static void sendMostlyCloudyAlert() {
         // Implement the logic to send an alert for mostly cloudy weather
         System.out.println("Mostly Cloudy Weather Alert: It may be overcast!");
+    }
+
+    // Alert method for light snow
+    private static void sendLightSnowAlert() {
+        // Implement the logic to send an alert for light snow
+        System.out.println("Light Snow Alert: Have a sip of hot cocoa and enjoy the winter wonderland!");
     }
 }
