@@ -1,5 +1,7 @@
 package com.example.weather.Stream_Querying_Project2.kafka;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import org.springframework.stereotype.Service;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -53,6 +55,27 @@ public class MyKafkaConsumer {
                         // Parse the JSON message
                         JsonObject json = JsonParser.parseString(record.value()).getAsJsonObject();
 
+                        // Identifies top-level keys in JSON
+                        //[@context, type, features]
+                        System.out.println(json.keySet());
+
+                        // Access the "features" array
+                        JsonArray featuresArray = json.getAsJsonArray("features");
+
+                        //System.out.println("Features Array: " + featuresArray.toString());
+
+                        for (JsonElement featureElement : featuresArray) {
+                            JsonObject feature = featureElement.getAsJsonObject();
+
+                            // Now you can access properties within each feature
+                            // For example, you might have "properties" within each feature
+                            JsonObject properties = feature.getAsJsonObject("properties");
+
+                            // Print the properties to the console
+                            System.out.println("Properties: " + properties.toString());
+
+                        }
+
                         // Extract relevant weather parameters
 //                        JsonObject properties = json.getAsJsonObject("properties");
 //                        double temperature = properties.getAsJsonObject("temperature").getAsDouble();
@@ -74,8 +97,8 @@ public class MyKafkaConsumer {
 //                            sendAlert("Heavy Rainfall Alert", record.value());
 //                        }
                         //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
-                        LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
-                                record.topic(), record.offset(), record.key(), record.value());
+//                        LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
+//                                record.topic(), record.offset(), record.key(), record.value());
                     } catch (Exception e) {
                         LOGGER.error("Error in Kafka Consumer: {}", e.getMessage());
                     } finally {
