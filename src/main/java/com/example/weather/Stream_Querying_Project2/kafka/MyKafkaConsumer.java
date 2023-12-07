@@ -55,24 +55,25 @@ public class MyKafkaConsumer {
                         // Parse the JSON message
                         JsonObject json = JsonParser.parseString(record.value()).getAsJsonObject();
 
-                        // Identifies top-level keys in JSON
-                        //[@context, type, features]
-                        System.out.println(json.keySet());
-
                         // Access the "features" array
                         JsonArray featuresArray = json.getAsJsonArray("features");
-
-                        //System.out.println("Features Array: " + featuresArray.toString());
 
                         for (JsonElement featureElement : featuresArray) {
                             JsonObject feature = featureElement.getAsJsonObject();
 
                             // Now you can access properties within each feature
-                            // For example, you might have "properties" within each feature
                             JsonObject properties = feature.getAsJsonObject("properties");
 
-                            // Print the properties to the console
-                            System.out.println("Properties: " + properties.toString());
+                            // Print the keys of the properties object
+                            //System.out.println("Properties Keys: " + properties.keySet());
+
+                            // Fields to access within the properties
+                            JsonElement textDescriptionElement = properties.get("textDescription");
+
+                            JsonElement timeStampElement = properties.get("timestamp");
+
+                            // Print to console
+                            System.out.println("Text Description: " + textDescriptionElement.toString() + "," + " Timestamp: " + timeStampElement.toString());
 
                         }
 
