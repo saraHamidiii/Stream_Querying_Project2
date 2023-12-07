@@ -78,8 +78,6 @@ public class MyKafkaConsumer {
 
                             JsonElement textDescriptionElement = properties.get("textDescription");
 
-                            JsonElement temperatureElement = properties.get("temperature");
-
                             // Fields to access within temperature
                             JsonElement valueElement = temperature.get("value");
 
