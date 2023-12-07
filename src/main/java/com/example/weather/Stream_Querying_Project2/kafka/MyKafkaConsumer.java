@@ -40,7 +40,8 @@ public class MyKafkaConsumer {
 
             // Seek to the end of each partition
             consumer.assignment().forEach(tp -> consumer.seekToEnd(Collections.singleton(tp)));
-
+            
+            // Continuously poll for new data from kafka topics listening for incoming messages and processing them
             while (true) {
                 // Poll for new data
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
