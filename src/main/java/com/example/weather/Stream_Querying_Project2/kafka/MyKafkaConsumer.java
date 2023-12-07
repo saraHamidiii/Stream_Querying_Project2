@@ -61,8 +61,11 @@ public class MyKafkaConsumer {
                         for (JsonElement featureElement : featuresArray) {
                             JsonObject feature = featureElement.getAsJsonObject();
 
-                            // Now you can access properties within each feature
+                            // Access properties within each feature
                             JsonObject properties = feature.getAsJsonObject("properties");
+
+                            // Access temperature within properties
+                            JsonObject temperature = properties.getAsJsonObject("temperature");
 
                             // Print the properties to the console
                             //System.out.println("Properties: " + properties.toString());
@@ -71,13 +74,17 @@ public class MyKafkaConsumer {
                             //System.out.println("Properties Keys: " + properties.keySet());
 
                             // Fields to access within the properties
+                            JsonElement idElement = properties.get("@id");
+
                             JsonElement textDescriptionElement = properties.get("textDescription");
 
-                            JsonElement timeStampElement = properties.get("timestamp");
+                            JsonElement temperatureElement = properties.get("temperature");
+
+                            // Fields to access within temperature
+                            JsonElement valueElement = temperature.get("value");
 
                             // Print to console
-                            System.out.println("Text Description: " + textDescriptionElement.toString() + "," + " Timestamp: " + timeStampElement.toString());
-
+                            System.out.println("ID: " + idElement + "Text Description: " + textDescriptionElement.toString() + "," + " Temperature: " + valueElement.toString());
                         }
 
                         // Extract relevant weather parameters
