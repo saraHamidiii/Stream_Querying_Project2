@@ -67,19 +67,10 @@ public class MyKafkaConsumer {
                             // Access temperature within properties
                             JsonObject temperature = properties.getAsJsonObject("temperature");
 
-                            // Print the properties to the console
-                            //System.out.println("Properties: " + properties.toString());
-
-                            // Print the keys of the properties object
-                            //System.out.println("Properties Keys: " + properties.keySet());
-
                             // Fields to access within the properties
                             JsonElement idElement = properties.get("@id");
 
                             JsonElement textDescriptionElement = properties.get("textDescription");
-
-                            // Fields to access within temperature
-                            JsonElement valueElement = temperature.get("value");
 
                             // Check different weather conditions and display respective alerts
                             if (textDescriptionElement != null) {
@@ -96,11 +87,7 @@ public class MyKafkaConsumer {
                                     System.out.println("ID: " + idElement + " Text Description: " + textDescription);
                                 }
                             }
-
-                            // Print to console
-                            //System.out.println("ID: " + idElement + "Text Description: " + textDescriptionElement.toString() + "," + " Temperature: " + valueElement.toString());
                         }
-
                         //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
 //                        LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
 //                                record.topic(), record.offset(), record.key(), record.value());
@@ -113,7 +100,6 @@ public class MyKafkaConsumer {
             }
         }
     }
-
     // Alert method for clear weather
     private static void sendClearWeatherAlert() {
         // Implement the logic to send an alert for clear weather
