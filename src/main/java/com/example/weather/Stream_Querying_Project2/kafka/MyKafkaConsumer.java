@@ -81,6 +81,15 @@ public class MyKafkaConsumer {
                             // Fields to access within temperature
                             JsonElement valueElement = temperature.get("value");
 
+                            // Check if textDescription is "mostly cloudy"
+                            if (textDescriptionElement != null && textDescriptionElement.isJsonPrimitive()) {
+                                String textDescription = textDescriptionElement.getAsString();
+                                if ("mostly cloudy".equalsIgnoreCase(textDescription)) {
+                                    // Display alert for "mostly cloudy"
+                                    System.out.println("ALERT: Mostly cloudy weather Detected! It may rain.");
+                                }
+                            }
+
                             // Print to console
                             System.out.println("ID: " + idElement + "Text Description: " + textDescriptionElement.toString() + "," + " Temperature: " + valueElement.toString());
                         }
