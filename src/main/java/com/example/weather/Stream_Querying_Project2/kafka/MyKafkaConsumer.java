@@ -81,39 +81,26 @@ public class MyKafkaConsumer {
                             // Fields to access within temperature
                             JsonElement valueElement = temperature.get("value");
 
-                            // Check if textDescription is "mostly cloudy"
-                            if (textDescriptionElement != null && textDescriptionElement.isJsonPrimitive()) {
+                            // Check different weather conditions and display respective alerts
+                            if (textDescriptionElement != null) {
                                 String textDescription = textDescriptionElement.getAsString();
-                                if ("mostly cloudy".equalsIgnoreCase(textDescription)) {
-                                    // Display alert for "mostly cloudy"
-                                    System.out.println("ALERT: Mostly cloudy weather Detected! It may rain.");
+
+                                if ("clear".equalsIgnoreCase(textDescription)) {
+                                    System.out.println("ID: " + idElement + " Text Description: Clear");
+                                    sendClearWeatherAlert();
+                                } else if ("mostly cloudy".equalsIgnoreCase(textDescription)) {
+                                    System.out.println("ID: " + idElement + " Text Description: Mostly Cloudy");
+                                    sendMostlyCloudyAlert();
+                                } else {
+                                    // Handle other conditions or print to console
+                                    System.out.println("ID: " + idElement + " Text Description: " + textDescription);
                                 }
                             }
 
                             // Print to console
-                            System.out.println("ID: " + idElement + "Text Description: " + textDescriptionElement.toString() + "," + " Temperature: " + valueElement.toString());
+                            //System.out.println("ID: " + idElement + "Text Description: " + textDescriptionElement.toString() + "," + " Temperature: " + valueElement.toString());
                         }
 
-                        // Extract relevant weather parameters
-//                        JsonObject properties = json.getAsJsonObject("properties");
-//                        double temperature = properties.getAsJsonObject("temperature").getAsDouble();
-//                        double windSpeed = properties.getAsJsonObject("windSpeed").getAsDouble();
-//                        double precipitationLastHour = properties.getAsJsonObject("precipitationLastHour").getAsDouble();
-//
-//                        // Check for specific weather events
-//                        if (temperature < 0.0 && windSpeed > 20.0 && precipitationLastHour > 0.0) {
-//                            LOGGER.info("Blizzard alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                    record.topic(), record.offset(), record.key(), record.value());
-//                            sendAlert("Blizzard Alert", record.value());
-//                        } else if (windSpeed > 74.0) {
-//                            LOGGER.info("Hurricane alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                    record.topic(), record.offset(), record.key(), record.value());
-//                            sendAlert("Hurricane Alert", record.value());
-//                        } else if (precipitationLastHour > 10.0) {
-//                            LOGGER.info("Heavy Rainfall Alert! - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                    record.topic(), record.offset(), record.key(), record.value());
-//                            sendAlert("Heavy Rainfall Alert", record.value());
-//                        }
                         //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
 //                        LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
 //                                record.topic(), record.offset(), record.key(), record.value());
@@ -126,8 +113,16 @@ public class MyKafkaConsumer {
             }
         }
     }
-    private static void sendAlert(String alertType, String message) {
-        // Implement the logic to send an alert
-        LOGGER.info("Sending {} alert: {}", alertType, message);
+
+    // Alert method for clear weather
+    private static void sendClearWeatherAlert() {
+        // Implement the logic to send an alert for clear weather
+        System.out.println("Clear Weather Alert: Enjoy the clear skies!");
+    }
+
+    // Alert method for mostly cloudy weather
+    private static void sendMostlyCloudyAlert() {
+        // Implement the logic to send an alert for mostly cloudy weather
+        System.out.println("Mostly Cloudy Weather Alert: It may be overcast!");
     }
 }
