@@ -72,19 +72,22 @@ public class MyKafkaConsumer {
 
                             JsonElement textDescriptionElement = properties.get("textDescription");
 
+                            // Fields to access within temperature
+                            JsonElement valueElement = temperature.get("value");
+
                             // Check different weather conditions and display respective alerts
                             if (textDescriptionElement != null) {
                                 String textDescription = textDescriptionElement.getAsString();
 
                                 if ("clear".equalsIgnoreCase(textDescription)) {
-                                    System.out.println("ID: " + idElement + " Text Description: Clear");
+                                    System.out.println("ID: " + idElement + " Text Description: Clear" + "," + " Temperature: " + valueElement);
                                     sendClearWeatherAlert();
                                 } else if ("mostly cloudy".equalsIgnoreCase(textDescription)) {
-                                    System.out.println("ID: " + idElement + " Text Description: Mostly Cloudy");
+                                    System.out.println("ID: " + idElement + " Text Description: Mostly Cloudy" + "," + " Temperature: " + valueElement);
                                     sendMostlyCloudyAlert();
                                 } else {
                                     // Handle other conditions or print to console
-                                    System.out.println("ID: " + idElement + " Text Description: " + textDescription);
+                                    System.out.println("ID: " + idElement + " Text Description: " + textDescription + "," + " Temperature: " + valueElement);
                                 }
                             }
                         }
