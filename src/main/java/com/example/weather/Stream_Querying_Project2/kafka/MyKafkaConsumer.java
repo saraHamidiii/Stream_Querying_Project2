@@ -88,6 +88,9 @@ public class MyKafkaConsumer {
                                 } else if ("light snow".equalsIgnoreCase(textDescription)) {
                                     System.out.println("ID: " + idElement + " Text Description: Light Snow" + "," + " Temperature: " + valueElement);
                                     sendLightSnowAlert();
+                                } else if ("fog".equalsIgnoreCase(textDescription)) {
+                                    System.out.println("ID: " + idElement + " Text Description: Fog" + "," + " Temperature: " + valueElement);
+                                    sendFogAlert();
                                 } else {
                                     // Handle other conditions or print to console
                                     System.out.println("ID: " + idElement + " Text Description: " + textDescription + "," + " Temperature: " + valueElement);
@@ -122,5 +125,10 @@ public class MyKafkaConsumer {
     private static void sendLightSnowAlert() {
         // Implement the logic to send an alert for light snow
         System.out.println("Light Snow Alert: Have a sip of hot cocoa and enjoy the winter wonderland!");
+    }
+    // Alert method for fog
+    private static void sendFogAlert() {
+        // Implement the logic to send an alert for light snow
+        System.out.println("Fog Alert: Foggy vibes ahead. Slow down and stay safe!");
     }
 }
