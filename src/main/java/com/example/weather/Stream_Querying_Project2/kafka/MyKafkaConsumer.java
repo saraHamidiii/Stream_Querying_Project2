@@ -97,9 +97,6 @@ public class MyKafkaConsumer {
                                 }
                             }
                         }
-                        //System.out.printf("Topic = %s, Offset = %d, Key = %s, Value = %s%n",
-//                        LOGGER.info("Consumed message - Topic: {}, Offset: {}, Key: {}, Value: {}",
-//                                record.topic(), record.offset(), record.key(), record.value());
                     } catch (Exception e) {
                         LOGGER.error("Error in Kafka Consumer: {}", e.getMessage());
                     } finally {
