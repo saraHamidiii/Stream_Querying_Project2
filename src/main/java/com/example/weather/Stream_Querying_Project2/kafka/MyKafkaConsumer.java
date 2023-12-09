@@ -25,7 +25,7 @@ public class MyKafkaConsumer {
 
         // Set up consumer properties
         Properties props = new Properties();
-        props.put("bootstrap.servers", "127.0.0.1:9092"); // Replace with your Kafka bootstrap servers
+        props.put("bootstrap.servers", "34.66.182.16:9092, 34.171.82.244:9092, 34.123.131.116:9092"); // Replace with your Kafka bootstrap servers
         props.put("group.id", "my-group");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
