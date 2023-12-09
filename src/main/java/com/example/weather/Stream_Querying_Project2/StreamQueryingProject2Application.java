@@ -8,9 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 /*
 In this class, I created 3 WeatherApiClient objects; one for each topic.
 The topics in this project are cities in the US that are most likely to experience blizzards.
@@ -50,8 +47,7 @@ public class StreamQueryingProject2Application {
 		HTTPclient.connect("anchorageAK", a.getAnchorageWeather());
 	}
 
-	// Scheduled task to start Kafka consumer
-	// Consumer fetches data from Kafka
+	// Scheduled task to start Kafka consumer and fetches data from Kafka
 	@Scheduled(fixedRate = 1000) // Adjust the rate as needed
 	private void startKafkaConsumer() {
 		myKafkaConsumer.consumeMessages();
