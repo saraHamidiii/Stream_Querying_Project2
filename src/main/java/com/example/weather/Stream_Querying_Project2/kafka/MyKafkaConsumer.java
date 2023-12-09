@@ -128,7 +128,7 @@ public class MyKafkaConsumer {
     }
     // Alert method for fog
     private static void sendFogAlert() {
-        // Implement the logic to send an alert for light snow
+        // Implement the logic to send an alert for fog
         System.out.println("Fog Alert: Foggy vibes ahead. Slow down and stay safe!");
     }
 }
