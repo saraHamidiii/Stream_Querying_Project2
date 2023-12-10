@@ -51,4 +51,3 @@ IP_ADDRESS3 broker-3.us-central1-a.c.sapient-logic-400819.internal
 
 
 After that you can run the application to start the cluster
-Might need to wait a bit before it finally connects as it has connection errors for 20ish seconds at the start
