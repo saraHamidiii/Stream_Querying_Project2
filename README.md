@@ -25,6 +25,7 @@ Before starting the cluster you have to create the firewall rules in the VPC if 
 5. Put the rest of the 3 VMs external IPs in the "*Source IPv4 ranges" followed by the mask /32
 6. Click "Specified protocols and ports" in the "Protocol and ports" section and set the TCP to port 9092
 7. Click create rule
+
 NOTE: For the first time starting the cluster you have to add your public ip in the firewall rule,
 but after that you don't have to redo this part once you add yours in, so anyone else connecting needs to put their
 public ip into this firewall rule
