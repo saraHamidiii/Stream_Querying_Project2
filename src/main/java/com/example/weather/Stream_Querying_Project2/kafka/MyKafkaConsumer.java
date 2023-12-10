@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 
+/* The consumer class fetches and parses data from the Kafka topic
+*  Alerts are displayed based on weather conditions */
 @Service
 public class MyKafkaConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyKafkaConsumer.class);
