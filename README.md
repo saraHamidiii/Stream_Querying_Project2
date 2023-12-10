@@ -6,7 +6,7 @@ https://kafka.apache.org/
 Before starting the cluster you have to create the firewall rules in the VPC
 ---------------------------------------------------------------------------------------------------------
 "command" firewall rule
-1. IF YOU ARE ABLE TO SSH TO THE VMs, YOU CAN SKIP THIS STEP
+1. IF YOU ARE ABLE TO SSH TO THE VMs, YOU CAN SKIP THIS RULE
 2. Run the SSH to the VM to get the IP address needed to connect
 3. Go to the VPC page on Google Cloud
 4. Click create firewall rule
