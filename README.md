@@ -1,9 +1,9 @@
 ---------------------------------------------------------------------------------------------------------
-Required to download Apache Kafka:
+Required to download Apache Kafka in each of the VMs:
 https://kafka.apache.org/
 
 ---------------------------------------------------------------------------------------------------------
-Before starting the cluster you have to create the firewall rules in the VPC
+Before starting the cluster you have to create the firewall rules in the VPC if using your own google VMs
 ---------------------------------------------------------------------------------------------------------
 "command" firewall rule
 1. IF YOU ARE ABLE TO SSH TO THE VMs, YOU CAN SKIP THIS RULE
