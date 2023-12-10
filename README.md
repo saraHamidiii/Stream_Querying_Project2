@@ -54,7 +54,7 @@ Start up the 3 VMs then
 
 7. Check the Google Compute page for the 3 VMs external IP address
 8. Go to application.properties in the project
-9. Put in the spring.kafka.consumers.bootstrap-servers section, the ip_address:port, where the port is 9092
+9. Put in the spring.kafka.consumers.bootstrap-servers section and spring.kafka.bootstrap-servers section, the ip_address:port, where the port is 9092
    followed by a comma and put the other two etc.
 10. Then for spring.kafka.producer.bootstrap-server section, select one of the external IP addresses (any one is fine)
     and put it, along with the port for each being 9092
