@@ -15,6 +15,8 @@ public class KafkaTopicConfig
     public NewTopic buffaloNY()
     {
         return TopicBuilder.name("buffaloNY")
+                .partitions(3)
+                .replicas(1)
                 .build();
     }
 
@@ -22,6 +24,8 @@ public class KafkaTopicConfig
     @Bean public NewTopic chanhassenMN()
     {
         return TopicBuilder.name("chanhassenMN")
+                .partitions(3)
+                .replicas(1)
                 .build();
     }
 
@@ -29,6 +33,8 @@ public class KafkaTopicConfig
     public NewTopic anchorageAK()
     {
         return TopicBuilder.name("anchorageAK")
+                .partitions(3)
+                .replicas(1)
                 .build();
     }
 
