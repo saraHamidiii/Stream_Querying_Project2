@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------------
+Required to download Apache Kafka:
+https://kafka.apache.org/
+
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 For the first time starting the cluster you have to add your public ip in the firewall rule,
 but after that you don't have to redo this part once you add yours in
 
