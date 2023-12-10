@@ -44,7 +44,9 @@ Start up the 3 VMs then
     the name "broker-1" below will match with the external IP address of the VM named "broker-1" and so on
 
 IP_ADDRESS1 broker-1.us-central1-a.c.sapient-logic-400819.internal
+
 IP_ADDRESS2 broker-2.us-central1-a.c.sapient-logic-400819.internal
+
 IP_ADDRESS3 broker-3.us-central1-a.c.sapient-logic-400819.internal
 
 
